@@ -27,22 +27,24 @@ class MainActivity : FlutterActivity(), IPaymentSuccessCallBack<TransactionRespo
                 val arguments = call.arguments as ArrayList<String>
                 val sabPaisaGateway1 =
                     SabPaisaGateway.builder()
-                        .setAmount(arguments[4].toDouble())   //Mandatory Parameter
+                        .setAmount(2.00)
+                        //.setAmount(arguments[4].toDouble())   //Mandatory Parameter
+
                         .setFirstName(arguments[0]) //Mandatory Parameter
                         .setLastName(arguments[1]) //Mandatory Parameter
                         .setMobileNumber(arguments[3])
                         .setEmailId(arguments[2])//Mandatory Parameter
                         .setSabPaisaPaymentScreen(true)//Mandatory Parameter
-                        .setSalutation(SabPaisaGateway.EMPTY_STRING)
+                        .setSalutation("")
                         .setClientCode("TM001")
                         .setAesApiIv("YN2v8qQcU3rGfA1y")
                         .setAesApiKey("kaY9AIhuJZNvKGp2")
                         .setTransUserName("rajiv.moti_336")
                         .setTransUserPassword("RIADA_SP336")
                         .build()
-                SabPaisaGateway.initUrl = "https://securepay.sabpaisa.in/SabPaisa/sabPaisaInit?v=1"
-                SabPaisaGateway.endPointBaseUrl = "https://securepay.sabpaisa.in"
-                SabPaisaGateway.txnEnquiryEndpoint = "https://txnenquiry.sabpaisa.in"
+                SabPaisaGateway.setInitUrl("https://securepay.sabpaisa.in/SabPaisa/sabPaisaInit?v=1")
+                SabPaisaGateway.setEndPointBaseUrl("https://securepay.sabpaisa.in")
+                SabPaisaGateway.setTxnEnquiryEndpoint("https://txnenquiry.sabpaisa.in")
 
 
                 sabPaisaGateway1.init(this@MainActivity, this)
